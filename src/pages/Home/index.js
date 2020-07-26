@@ -11,8 +11,11 @@ function Home() {
     <>
     <header className="top">
         <img src={logo} className="top__img" alt="Pokedex Logo"/>
-        <Search />
     </header>
+
+    <div className="search-container">
+    <Search />
+    </div>
     <Pokemon />
     </>
   );
