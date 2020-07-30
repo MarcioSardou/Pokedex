@@ -1,30 +1,38 @@
-import React from 'react';
-import { useState, useEffect } from 'react'
-import api  from '../../utils/api'
-import './styles.scss'
-import bulba from '../../assets/BULBA.png'
+import React, { useState, useEffect } from 'react';
+import './styles.scss';
 
+function Pokemon(props) {
+  
+  const [pokemon, setPokemon] = useState({
+    id: '',
+    name: '',
+    image:'',
+  })
 
-function Pokemon() {
+  const { url } = props
+ 
+  useEffect(() => {
+    const id = url.substring(34, url.length - 1) 
 
-const [pokemon, setPokemon] = useState([])
-
-
-useEffect(() => {
-  api.get('/').then(response => setPokemon(response.data.results))
-}, [])
-
-
-
+    setPokemon({
+      id,
+      name: props.name,
+      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+    })
+  },[props.name, url])
+  
+  
   return (
+    
     <div className="card">
-      
-        <p className="card__title">BULBASSAUR</p>
-      <img className="card__img" src={bulba}/>
-        <span className="card__number">#003</span>
+      <div className="card__title">{props.name}</div>
+      <img className="card__img" src={pokemon.image} alt={`${pokemon.name}`}/>
+  <div className="card__number">#{pokemon.id}</div>
       <button className="btn">Details</button>
     </div>
-  )
-}
-
-export default Pokemon;
+    )
+  }
+  
+  export default Pokemon;
+  
+  

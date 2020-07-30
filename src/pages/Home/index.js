@@ -1,24 +1,42 @@
-import React from 'react';
-import Pokemon from '../../components/Pokemon'
-import Search from '../../components/Search'
+  import React, { useState, useEffect } from 'react';
+  import Pokemon from '../../components/Pokemon'
+  import Search from '../../components/Search'
+  import logo from '../../assets/pokedex-logo.png'
+  import './styles.scss'
+  import api from '../../utils/api'
 
-import logo from '../../assets/pokedex-logo.png'
-import './styles.scss'
 
+  function Home() {
 
-function Home() {
-  return (
-    <>
-    <header className="top">
-        <img src={logo} className="top__img" alt="Pokedex Logo"/>
-    </header>
+    const [allPokemon, setAllPokemon] = useState([])
 
-    <div className="search-container">
-    <Search />
-    </div>
-    <Pokemon />
-    </>
-  );
-}
+    useEffect(() => {
+      api.get('/')
+        .then(response => setAllPokemon(response.data['results']))
+    },[])
+    
+    return (
+      <React.Fragment>
+        <header className="top">
+          <img src={logo} className="top__img" alt="Pokedex Logo"/>
+        </header>
+        <div className="search-container">
+          <Search />
+        </div>
+        
+        <div className="pokecard">
+        {allPokemon.map(pokemon => (
+          <Pokemon
+            key={pokemon.name}
+            url={pokemon.url}
+            name={pokemon.name}
+          />
 
-export default Home;
+        ))}
+      
+        </div>  
+      </React.Fragment>
+        );
+      }
+      
+      export default Home;

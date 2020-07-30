@@ -8,3 +8,9 @@
   top: 0;
   text-align: center;
 }
+
+.pokecard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
