@@ -24,7 +24,7 @@
           <Search />
         </div>
         
-        <div className="pokecard">
+        <div className="pokeList">
         {allPokemon.map(pokemon => (
           <Pokemon
             key={pokemon.name}
