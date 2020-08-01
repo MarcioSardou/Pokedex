@@ -1,20 +1,28 @@
-.top {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  left: 0;
-  top: 0;
-  text-align: center;
-}
+@import '../../styles/reset.css';
+@import '../../styles/conf.scss';
 
-.pokeList {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+.container {
+  background-color: $BACKGROUND_COLOR;
+  margin: 0;
+
+  &__top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: center;
+  }
+
+  &__pokeList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
 }
 
