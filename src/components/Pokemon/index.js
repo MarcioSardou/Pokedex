@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import './styles.scss';
 
 function Pokemon(props) {
@@ -9,8 +10,6 @@ function Pokemon(props) {
     name: '',
     image:'',
   })
-
- 
   useEffect(() => {
     const id = url.substring(34, url.length - 1) 
 
@@ -31,7 +30,9 @@ function Pokemon(props) {
       <div className="card__title">{pokemon.name}</div>
         <img className="card__img" src={pokemon.image} alt={`${pokemon.name}`}/>
       <div className="card__number">#{pokemon.id}</div>
-      <button className="card__btn">Info</button>
+      <Link to={`pokemon/${pokemon.id}`}>
+        <button className="card__btn">Info</button>
+      </Link>
     </div>
     )
   }

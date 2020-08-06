@@ -16,7 +16,6 @@
     },[])
     
     return (
-      <React.Fragment>
         <div className="container">
           <header className="container__top">
             <img src={logo} className="container__top__img" alt="Pokedex Logo"/>
@@ -36,7 +35,6 @@
           ))}
           </div>
         </div>  
-      </React.Fragment>
         );
       }
       

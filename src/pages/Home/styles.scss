@@ -1,19 +1,20 @@
-@import '../../styles/reset.css';
-@import '../../styles/conf.scss';
+@import '../../components/Layout/styles/conf.scss';
+
 
 .container {
-  background-color: $BACKGROUND_COLOR;
-  margin: 0;
-
+  
   &__top {
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    position: relative;
     left: 0;
     top: 0;
     text-align: center;
+    position: fixed;
+    z-index: 1;
+    background-color: $BACKGROUND_COLOR;
+
   }
 
   &__pokeList {
@@ -22,6 +23,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-top:1em;
     padding: 10px;
   }
 }

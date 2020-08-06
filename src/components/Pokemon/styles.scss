@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap");
-$white: #fff;
-$red: #d50f26;
+@import '../Layout/styles/conf.scss';
 
 .card {
   display: flex;
@@ -12,7 +10,6 @@ $red: #d50f26;
   margin: 30px 10px 20px 10px;
   border: 2px solid #acb5b6;
   border-radius: 20px;
-  font-family: 'Roboto', sans-serif;
 
   // &:hover {
   //   border: 1px solid red;
@@ -23,7 +20,6 @@ $red: #d50f26;
     font-size: 18px;
     font-weight: bold;
     padding-bottom: 1.9em;
-    font-family: 'Roboto', sans-serif;
   }
 
     &__img {
@@ -35,8 +31,6 @@ $red: #d50f26;
     font-weight: bold;
     font-size: 18px;
     font-weight: bold;
-    padding: 10px 0 10px;
-    font-family: 'Roboto', sans-serif;
   }
 
   &__btn {
