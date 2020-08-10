@@ -1,25 +1,44 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { useParams } from "react-router-dom";
+import api from '../../utils/api'
+import { PokemonName,getId } from '../../utils/pokemonData';
 
+function Intern(props) {
 
-function Intern() {
+  const [pokemonData, setPokemonData] = useState({
+    order: '',
+    name: '',
+    img: '',
+    type:'',
+  })
 
+  
+  let { id } = useParams();
 
+  useEffect(() => {
+   api.get(`/${id}`)
+    .then(response => setPokemonData({
+      order: response.data.id,
+      name: PokemonName(response.data.name),
+      img: response.data.sprites.front_default,
+      type:response.data.types.map(types => types.type.name),
+    }))
+
+  },[id])
+
+  const pokemon = pokemonData
+  console.log(pokemon);
   return (
     <div className="container">
-      <div className="container__order">#001</div>
-      <div className="container__title">Bulbassaur</div>
+
+  <div className="container__order">#{pokemon.order}</div>
+      <div className="container__title">{pokemon.name}</div>
       <div className="container__picture">
-      <img src="#" alt="Pokemon"/>
+      <img src={pokemon.img} alt={pokemon.name}/>
       </div>
       <div className="container__types">
-        <span>
-          Grass
-        </span>
-        <span>
-          Poison
-        </span>
+  <div className="types">{pokemon.type}</div>
       </div>
-      <p className="container__text">LOREMDSSODASDOSAD SAODKASODK ASKD LASKDLAKDLASKDLASADKLASKDLASKDWQOLEKAD</p>
     </div>
   );
 }
