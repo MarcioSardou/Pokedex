@@ -13,3 +13,24 @@ body {
   background-color:$BACKGROUND_COLOR ;
   font-family: 'Roboto', sans-serif;
 }
+
+.page-content {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+
+  &__block {
+    width: 100%;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-top: 6em;
+  margin: 5px;
+  color: white;
+  font-weight: bold;
+}

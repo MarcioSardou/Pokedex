@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getId, PokemonName } from '../../utils/pokemonData' 
+import { getId } from '../../utils/pokemonData' 
 import { Link } from "react-router-dom";
 import './styles.scss';
 
@@ -16,7 +16,7 @@ function Pokemon(props) {
 
     setPokemon({
       id,
-      name: PokemonName(name),
+      name,
       image: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`
     })
 
@@ -25,7 +25,7 @@ function Pokemon(props) {
   return (
     
     <div className="card">
-      <div className="card__title">{pokemon.name}</div>
+      <div className="card__title">{pokemon.name.toLocaleUpperCase()}</div>
         <img className="card__img" src={pokemon.image} alt={`${pokemon.name}`}/>
       <div className="card__number">#{pokemon.id}</div>
       <Link 

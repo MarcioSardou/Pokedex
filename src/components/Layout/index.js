@@ -9,7 +9,7 @@ const Body = (props) => {
   return (
     <>
       <main className="page-content">
-        <section className="page-content__card">{children}</section>
+        <section className="page-content__block">{children}</section>
       </main>
     </>
   )
