@@ -5,8 +5,7 @@
   
   &__top {
     width: 100%;
-    display: flex;
-    align-items: center;
+    @include flex-center;
     flex-direction: column;
     left: 0;
     top: 0;
@@ -18,11 +17,9 @@
   }
 
   &__pokeList {
-    display: flex;
+    @include flex-center;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
     margin-top:1em;
     padding: 10px;
   }

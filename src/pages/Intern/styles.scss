@@ -1,17 +1,15 @@
+
 .container {
 
-
   &__header {
-    display: flex;
+    @include flex-center;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 3em;
     margin: 0px 5px 20px 5px;
-    border-radius: 10px;
-    font-size: 18px;
     background-color: green;
-    box-shadow: inset 0 0 1em gray, 0 0 1em gray;
+    height: 3em;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0 8px 6px -6px black;
 
     .title {
       padding: 4em;
@@ -28,18 +26,39 @@
   }
 
   &__types {
-    display: flex;
+    @include flex-center;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-items: baseline;
-    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 25px;
+
+    div + div {
+      margin-left: 20px;
+    }
 
     div {
+      @include flex-center;
       background-color: green;
-      width: 6em;
+      width: 120px;
       border-radius: 20px;
       height: 2em;
+      box-shadow: 0 8px 6px -6px black;
+      padding:10px;
+    }    
+  }
+
+  &__stats {
+    @include flex-center;
+    place-content: space-evenly;
+    box-shadow: 0 8px 6px -6px black;
+    margin: 20px 5px 20px 5px;
+    flex-direction: row;
+    height: 3em;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: green;
+
+    span {
+
     }
   }
 }
