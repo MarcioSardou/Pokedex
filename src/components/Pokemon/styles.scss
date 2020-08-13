@@ -17,7 +17,7 @@
     color: $white;
     font-size: 18px;
     font-weight: bold;
-    padding-bottom: 1.9em;
+    padding-bottom: 30px;
   }
 
     &__img {
@@ -29,6 +29,7 @@
     font-weight: bold;
     font-size: 18px;
     font-weight: bold;
+    padding: 10px;
   }
 
   &__btn {
@@ -39,6 +40,8 @@
     font-weight: bold;
     width: 50px;
     border: 1px solid transparent;
+    padding:3px;
+    cursor: pointer;
 
     &:hover {
       background-color:$white;

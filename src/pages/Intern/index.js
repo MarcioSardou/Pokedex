@@ -36,8 +36,8 @@ function Intern() {
   return (
     <div className="container">
       <div className="container__header">
-        <div className="order">#{pokemon.order}</div>
-        <div className="title">{pokemon.name}</div>
+          <div className="order">#{pokemon.order}</div>
+          <div className="title">{pokemon.name}</div>
       </div>
       <div className="container__picture">
         <img src={pokemon.img} alt={pokemon.name} />

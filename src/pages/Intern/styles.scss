@@ -4,24 +4,33 @@
   &__header {
     @include flex-center;
     flex-direction: row;
-    margin: 0px 5px 20px 5px;
     background-color: green;
-    height: 3em;
+    height: 60px;
     border-radius: 10px;
     font-size: 20px;
-    box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px rgb(253, 210, 210);
+    width: 100%;
+
+    .order {
+      padding:10px;
+      width: 80px;
+    }
 
     .title {
-      padding: 4em;
+      padding:10px;
+      width: 150px;
     }
   }
 
   &__picture {
     text-align: center;
-    padding-top: 2em;
 
     img {
       width: 70%;
+      
+      @media #{$BREAKPOINT-DESK}{
+        width: 30%;
+      }
     }
   }
 
@@ -40,7 +49,6 @@
       background-color: green;
       width: 120px;
       border-radius: 20px;
-      height: 2em;
       box-shadow: 0 8px 6px -6px black;
       padding:10px;
     }    
@@ -52,7 +60,7 @@
     box-shadow: 0 8px 6px -6px black;
     margin: 20px 5px 20px 5px;
     flex-direction: row;
-    height: 3em;
+    height: 60px;
     border-radius: 10px;
     font-size: 20px;
     background-color: green;
