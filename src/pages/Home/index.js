@@ -9,11 +9,17 @@
   function Home() {
 
     const [allPokemon, setAllPokemon] = useState([])
+    const [limit, setLimit] = useState(20)
+
+    function carregaMais() {
+      setLimit(limit + 20)
+      console.log('aqui :',limit);
+    }
 
     useEffect(() => {
-      api.get('/')
+      api.get(`/?limit=${limit}`)
         .then(response => setAllPokemon(response.data['results']))
-    },[])
+    },[limit])
     
     return (
         <div className="container">
@@ -31,8 +37,8 @@
               url={pokemon.url}
               name={pokemon.name}
             />
-
           ))}
+          <button className="container__pokeList__btn-load"onClick={() => carregaMais()}>Carregar Mais</button>
           </div>
         </div>  
         );
