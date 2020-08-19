@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import api from '../../utils/api'
 
-function Intern() {
+function Intern(props) {
 
   const [pokemonData, setPokemonData] = useState({
     order: '',
@@ -52,6 +52,9 @@ function Intern() {
         <span>Height : {(pokemon.height/10)}m</span>
         <span>Weigth : {(pokemon.weigth/10)}kg</span>
       </div>
+
+      {id ? console.log('aqui',id): console.error("ERRO")}
+      {/* usar isso acima pra exibir evoluções */}
     </div>
   );
 }

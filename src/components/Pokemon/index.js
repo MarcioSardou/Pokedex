@@ -30,7 +30,7 @@ function Pokemon(props) {
       <div className="card__number">#{pokemon.id}</div>
       <Link 
         to={`pokemon/${pokemon.id}`}>
-        <button className="card__btn">INFO</button>
+        <button className="card__btn">Details</button>
       </Link>
     </div>
     )

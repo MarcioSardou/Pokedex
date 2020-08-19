@@ -4,10 +4,15 @@
   @include flex-center;
   flex-direction: column;
   width: 150px;
-  height: 200px;
+  height: auto;
   margin: 30px 10px 20px 10px;
   border: 2px solid #acb5b6;
   border-radius: 20px;
+
+  @media #{$BREAKPOINT-DESK}{
+    width: 160px;
+
+  }
 
   // &:hover {
   //   border: 1px solid red;
@@ -17,7 +22,7 @@
     color: $white;
     font-size: 18px;
     font-weight: bold;
-    padding-bottom: 30px;
+    padding: 20px;
   }
 
     &__img {
@@ -38,10 +43,11 @@
     background-color:$red;
     color: $white;
     font-weight: bold;
-    width: 50px;
+    width: 100px;
     border: 1px solid transparent;
-    padding:3px;
+    padding: 5px;
     cursor: pointer;
+    margin: 9px;
 
     &:hover {
       background-color:$white;
