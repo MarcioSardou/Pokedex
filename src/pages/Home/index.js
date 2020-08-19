@@ -11,9 +11,8 @@
     const [allPokemon, setAllPokemon] = useState([])
     const [limit, setLimit] = useState(20)
 
-    function carregaMais() {
+    function loadMore() {
       setLimit(limit + 20)
-      console.log('aqui :',limit);
     }
 
     useEffect(() => {
@@ -38,7 +37,7 @@
               name={pokemon.name}
             />
           ))}
-          <button className="container__pokeList__btn-load"onClick={() => carregaMais()}>Carregar Mais</button>
+          <button className="container__pokeList__btn-load"onClick={() => loadMore()}>Carregar Mais</button>
           </div>
         </div>  
         );
