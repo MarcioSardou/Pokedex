@@ -10,10 +10,16 @@
 
     const [allPokemon, setAllPokemon] = useState([])
     const [limit, setLimit] = useState(20)
+    const [search, setSearch] = useState('')
 
     function loadMore() {
       setLimit(limit + 20)
     }
+
+    const handleSearch = (event) => {
+      event.preventDefault();
+      setSearch(event.target.value)
+      }
 
     useEffect(() => {
       api.get(`/?limit=${limit}`)
@@ -25,8 +31,10 @@
           <header className="container__top">
             <img src={logo} className="container__top__img" alt="Pokedex Logo"/>
           </header>
-          <div className="search-container">
-            <Search />
+          <div className="search-container" onChange={(e) => handleSearch(e)}>
+            <Search 
+              value={search}
+            />
           </div>
           
           <div className="container__pokeList">
