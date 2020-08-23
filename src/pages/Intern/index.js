@@ -53,8 +53,8 @@ function Intern(props) {
         <span>Weigth : {(pokemon.weigth/10)}kg</span>
       </div>
 
-      {id ? console.log('aqui',id): console.error("ERRO")}
-      {/* usar isso acima pra exibir evoluções */}
+      {/* {id ? console.log('aqui',id): console.error("ERRO")}
+      usar isso acima pra exibir evoluções */}
     </div>
   );
 }

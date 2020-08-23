@@ -6,6 +6,7 @@
 $BACKGROUND_COLOR: #d5ccf9;
 $white: #fff;
 $red: #d50f26;
+
 /*
 |--------------------------------------------------------------------------
 | BREAKPOINTS
@@ -25,4 +26,8 @@ $BREAKPOINT-MOBILE-LAND: 		"only screen and (min-width: 480px)";
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin box-shadow {
+  box-shadow: 0 8px 6px -6px black;
 }
