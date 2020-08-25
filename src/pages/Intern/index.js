@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
-import api from '../../utils/api'
+import { useParams, useHistory } from "react-router-dom";
+import api from '../../utils/api';
+import pokeTypes from '../../utils/pokemonTypes'
 
-function Intern(props) {
-
+function Intern(props) {  
   const [pokemonData, setPokemonData] = useState({
     order: '',
     name: '',
@@ -16,6 +16,11 @@ function Intern(props) {
   let { id } = useParams();
   const imageUrl = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`
 
+  let  history  = useHistory();
+
+  // const backHome = () => {
+  //   history.push('/')
+  // }
 
   useEffect(() => {
 
@@ -35,6 +40,7 @@ function Intern(props) {
 
   return (
     <div className="container">
+      {/* <button onClick={backHome}>HOME</button> */}
       <div className="container__header">
           <div className="order">#{pokemon.order}</div>
           <div className="title">{pokemon.name}</div>
@@ -52,7 +58,7 @@ function Intern(props) {
         <span>Height : {(pokemon.height/10)}m</span>
         <span>Weigth : {(pokemon.weigth/10)}kg</span>
       </div>
-
+        
       {/* {id ? console.log('aqui',id): console.error("ERRO")}
       usar isso acima pra exibir evoluções */}
     </div>
