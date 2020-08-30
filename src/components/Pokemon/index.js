@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getId } from '../../utils/pokemonData' 
 import { Link } from "react-router-dom";
-import pokeTypes from '../../utils/pokemonTypes'
 import './styles.scss';
 
 function Pokemon(props) {
@@ -12,6 +11,7 @@ function Pokemon(props) {
     name: '',
     image:'',
   })
+  
   useEffect(() => {
     const id = getId(url)
 
@@ -24,7 +24,6 @@ function Pokemon(props) {
   },[name, url])
 
   return (
-    
     <div className="card">
       <div className="card__title">{pokemon.name.toLocaleUpperCase()}</div>
         <img className="card__img" src={pokemon.image} alt={`${pokemon.name}`}/>

@@ -31,7 +31,7 @@ function Home() {
     api.get(`/?limit=${limit}`)
       .then(response => {
         setAllPokemon(response.data['results'],
-        setFilterPokemon(response.data['results'])
+        setFilterPokemon(response.data['results']),
   )})
 
       
@@ -49,7 +49,6 @@ function Home() {
             />
           </form>
         </div>
-        
         <div className="container__pokeList">
           
         {filterPokemon.map(pokemon => (

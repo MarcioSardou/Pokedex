@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import Header from '../../components/Header';
 import api from '../../utils/api';
+import { FiArrowLeft } from "react-icons/fi";
 import pokeTypes from '../../utils/pokemonTypes'
 
 function Intern(props) {  
@@ -19,9 +20,9 @@ function Intern(props) {
 
   let  history  = useHistory();
 
-  // const backHome = () => {
-  //   history.push('/')
-  // }
+  const backHome = () => {
+    history.push('/')
+  }
 
   useEffect(() => {
 
@@ -43,13 +44,12 @@ function Intern(props) {
   const type = mainTypes.find(type => poketypes.indexOf(type) > -1)
  
   const color = pokeTypes[type]
-  console.log(color);
 
 
   return (
     <div className="container">
     <Header />
-      {/* <button onClick={backHome}>HOME</button> */}
+      <FiArrowLeft onClick={backHome} className='back-btn'/>
       <div className="container__header" style={{backgroundColor: color}}>
           <div className="order">#{pokemon.order.toString().padStart(3, '0')}</div>
           <div className="title">{pokemon.name}</div>

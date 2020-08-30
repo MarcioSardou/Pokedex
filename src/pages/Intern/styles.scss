@@ -3,8 +3,6 @@
 
   &__header {
     @include flex-center;
-    flex-direction: row;
-    background-color: green;
     height: 60px;
     border-radius: 10px;
     font-size: 20px;
@@ -29,10 +27,6 @@
 
     img {
       width: 200px;
-      
-      // @media #{$BREAKPOINT-DESK}{
-      //   width: 30%;
-      // }
     }
   }
 
@@ -71,4 +65,15 @@
 
     }
   }
+}
+
+.back-btn {
+  position: absolute;
+  top: 146px;
+  left: 19px;
+  background-color: red;
+  border-radius: 20px;
+  width: 30px;
+  /* margin: 0 auto; */
+  height: 30px;
 }
