@@ -1,8 +1,8 @@
 const pokeTypes = {
-  normal: "#a8a777",
   fire: "#ef7e2f",
-  water: "#678fef",
   grass: "#77c64f",
+  water: "#678fef",
+  normal: "#a8a777",
   electric: "#ffea00",
   fighting: "#bf3028",
   ice: "#97d7d7",

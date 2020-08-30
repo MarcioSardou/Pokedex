@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from "react-router-dom";
+import Header from '../../components/Header';
 import api from '../../utils/api';
 import pokeTypes from '../../utils/pokemonTypes'
 
@@ -31,30 +32,38 @@ function Intern(props) {
         img: imageUrl,
         height: response.data.height,
         weigth: response.data.weight,
-        type: response.data.types.map(types => types.type.name.toLocaleUpperCase()),
+        type: response.data.types.map(types => types.type),
       }))
 
   }, [id, imageUrl])
 
   const pokemon = pokemonData
+  const mainTypes = Object.keys(pokeTypes)
+  const poketypes = pokemon.type.map(type => type.name)
+  const type = mainTypes.find(type => poketypes.indexOf(type) > -1)
+ 
+  const color = pokeTypes[type]
+  console.log(color);
+
 
   return (
     <div className="container">
+    <Header />
       {/* <button onClick={backHome}>HOME</button> */}
-      <div className="container__header">
-          <div className="order">#{pokemon.order}</div>
+      <div className="container__header" style={{backgroundColor: color}}>
+          <div className="order">#{pokemon.order.toString().padStart(3, '0')}</div>
           <div className="title">{pokemon.name}</div>
       </div>
       <div className="container__picture">
         <img src={pokemon.img} alt={pokemon.name} />
       </div>
-      <div className="container__types">
+      <div className="container__types" >
         {pokemon.type.map(type => (
-          <div className="type" key={type}>{type}</div>
+          <div className="type" style={{backgroundColor: color}} key={type.name}>{type.name.toLocaleUpperCase()}</div>
         ))}
       </div>
 
-      <div className="container__stats">
+      <div className="container__stats" style={{backgroundColor: color}}>
         <span>Height : {(pokemon.height/10)}m</span>
         <span>Weigth : {(pokemon.weigth/10)}kg</span>
       </div>
