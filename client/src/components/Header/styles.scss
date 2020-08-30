@@ -1,0 +1,14 @@
+@import '../../components/Layout/styles/conf.scss';
+
+header {
+  width: 100%;
+  @include flex-center;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  text-align: center;
+  position: fixed;
+  z-index: 1;
+  background-color: $BACKGROUND_COLOR;
+
+}

@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color:$BACKGROUND_COLOR ;
+  font-family: 'Roboto', sans-serif;
+}
+
+.page-content {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+
+  &__block {
+    width: 100%;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 80px;
+  margin: 5px;
+  color: white;
+  font-weight: bold;
+
+  @media #{$BREAKPOINT-DESK}{
+    max-width:1000px ;
+    margin: 0 auto;
+  }
+}

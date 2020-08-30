@@ -1,0 +1,33 @@
+/*
+|--------------------------------------------------------------------------
+| Pokedex  colors
+|--------------------------------------------------------------------------
+*/
+$BACKGROUND_COLOR: #d5ccf9;
+$white: #fff;
+$red: #d50f26;
+
+/*
+|--------------------------------------------------------------------------
+| BREAKPOINTS
+|--------------------------------------------------------------------------
+*/
+
+// Usage example:  @media #{$media-tablet}
+
+$BREAKPOINT-DESK: 		        "only screen and (min-width: 500px)";
+$BREAKPOINT-TABLET-LAND: 	    "only screen and (min-width: 975px)";
+$BREAKPOINT-TABLET: 		    "only screen and (min-width: 600px)";
+$BREAKPOINT-MOBILE-LAND: 		"only screen and (min-width: 480px)";
+
+
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin box-shadow {
+  box-shadow: 0 8px 6px -6px black;
+}
