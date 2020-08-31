@@ -45,8 +45,7 @@
     transition: width 3s;
     transition-delay: 3s;
     
-  
-      &:hover {
+      &:active {
         background-color:$white;
         color: #000;
         

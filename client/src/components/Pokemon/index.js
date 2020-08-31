@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getId } from '../../utils/pokemonData' 
 import { Link } from "react-router-dom";
+import { CgPokemon } from "react-icons/cg";
 import './styles.scss';
 
 function Pokemon(props) {
@@ -30,7 +31,7 @@ function Pokemon(props) {
       <div className="card__number">#{pokemon.id.toString().padStart(3, '0')}</div>
       <Link 
         to={`pokemon/${pokemon.id}`}>
-        <button className="card__btn">Details</button>
+        <button className="card__btn"><CgPokemon size="20"/></button>
       </Link>
     </div>
     )

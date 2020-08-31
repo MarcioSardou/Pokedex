@@ -42,7 +42,6 @@
 
     div {
       @include flex-center;
-      background-color: green;
       width: 120px;
       border-radius: 20px;
       @include box-shadow;
@@ -59,11 +58,6 @@
     height: 60px;
     border-radius: 10px;
     font-size: 20px;
-    background-color: green;
-
-    span {
-
-    }
   }
 }
 
@@ -74,6 +68,6 @@
   background-color: red;
   border-radius: 20px;
   width: 30px;
-  /* margin: 0 auto; */
+  cursor: pointer;
   height: 30px;
 }

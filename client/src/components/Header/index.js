@@ -8,6 +8,7 @@ function Header() {
     <React.Fragment>
       <header>
           <img src={logo} className="img" alt="Pokedex Logo"/>
+
       </header>
     </React.Fragment>
   );
