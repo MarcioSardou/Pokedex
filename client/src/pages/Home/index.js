@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Pokemon from '../../components/Pokemon'
-import Header from '../../components/Header'
 import api from '../../utils/api'
 import './styles.scss'
 
@@ -38,9 +37,8 @@ function Home() {
   } ,[limit, search])
   
   return (
-    <div className="container">
-        <Header />
-        <div className="search">
+    <section className="home">
+        <div className="home__search">
           <form>
             <input
               type="text" 
@@ -49,7 +47,7 @@ function Home() {
             />
           </form>
         </div>
-        <div className="container__pokeList">
+        <div className="home__pokeList">
           
         {filterPokemon.map(pokemon => (
           <Pokemon
@@ -58,9 +56,11 @@ function Home() {
             name={pokemon.name}
           />
         ))}
-        <button className="container__pokeList__btn-load"onClick={(e) => loadMore(e)}>Carregar Mais</button>
         </div>
-      </div>  
+        <button className="home__btn-load"onClick={(e) => loadMore(e)}>
+          LOAD MORE
+        </button>
+    </section>  
       );
     }
     

@@ -1,11 +1,10 @@
   import React, { useEffect, useState } from 'react';
   import { useParams, useHistory } from "react-router-dom";
   import { FiArrowLeft } from "react-icons/fi";
-  import Header from '../../components/Header';
   import pokeTypes from '../../utils/pokemonTypes'
   import api from '../../utils/api';
 
-  function Intern(props) {  
+  function Intern() {  
     
     const { id } = useParams();
     const  history  = useHistory();
@@ -40,13 +39,13 @@
     const pokemon = pokemonData
     const typeColors = pokeTypes
     const backgroundColorType = pokemon.type[0]
+    const dinamiColor = `${typeColors[backgroundColorType]}`
 
     
     return (
       <div className="container">
-      <Header />
-        <FiArrowLeft onClick={backHome} className='back-btn' size="10"/>
-        <div className="container__header" style={{backgroundColor: `${typeColors[backgroundColorType]}`}}>
+        <FiArrowLeft onClick={backHome} className='back-btn' size="20" style={{backgroundColor:dinamiColor }}/>
+        <div className="container__header" style={{backgroundColor:dinamiColor }}>
             <div className="order">#{pokemon.order.toString().padStart(3, '0')}</div>
             <div className="title">{pokemon.name}</div>
         </div>
@@ -61,7 +60,7 @@
           ))}
         </div>
 
-        <div className="container__stats" style={{backgroundColor: `${typeColors[backgroundColorType]}`}}>
+        <div className="container__stats" style={{backgroundColor:dinamiColor }}>
           <span>Height : {(pokemon.height/10)}m</span>
           <span>Weigth : {(pokemon.weigth/10)}kg</span>
         </div>

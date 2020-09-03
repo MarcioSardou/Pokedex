@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router'
-
+import Header from '../Header'
 import "./styles/main.scss"
 
 const Body = (props) => {
@@ -9,7 +9,10 @@ const Body = (props) => {
   return (
     <>
       <main className="page-content">
-        <section className="page-content__block">{children}</section>
+        <section className="container">
+          <Header />
+          {children}
+          </section>
       </main>
     </>
   )

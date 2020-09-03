@@ -3,7 +3,7 @@
 .card {
   @include flex-center;
   flex-direction: column;
-  width: 150px;
+  width: 140px;
   height: auto;
   margin: 30px 10px 20px 10px;
   border: 2px solid #acb5b6;
@@ -12,13 +12,8 @@
 
   @media #{$BREAKPOINT-DESK}{
     width: 160px;
-
   }
 
-  // &:hover {
-  //   border: 1px solid red;
-  // }
-  
   &__title {
     color: $white;
     font-size: 18px;
@@ -52,11 +47,7 @@
 
     &:hover {
       background-color:$white;
-      color: #000;
-
-
+      color:$red;
     }
-    
   }
-
 }

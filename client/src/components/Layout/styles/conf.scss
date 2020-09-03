@@ -15,10 +15,10 @@ $red: #d50f26;
 
 // Usage example:  @media #{$media-tablet}
 
-$BREAKPOINT-DESK: 		        "only screen and (min-width: 500px)";
+$BREAKPOINT-DESK: 		        "only screen and (min-width: 800px)";
 $BREAKPOINT-TABLET-LAND: 	    "only screen and (min-width: 975px)";
 $BREAKPOINT-TABLET: 		    "only screen and (min-width: 600px)";
-$BREAKPOINT-MOBILE-LAND: 		"only screen and (min-width: 480px)";
+$BREAKPOINT-MOBILE-LAND: 		"only screen and (max-width: 399px)";
 
 
 
@@ -30,4 +30,9 @@ $BREAKPOINT-MOBILE-LAND: 		"only screen and (min-width: 480px)";
 
 @mixin box-shadow {
   box-shadow: 0 8px 6px -6px black;
+}
+
+@mixin margin-page {
+  width: calc(100% - 40px);
+  margin: 0 auto;
 }
