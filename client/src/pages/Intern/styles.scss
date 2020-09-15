@@ -8,7 +8,6 @@
     font-size: 20px;
     @include box-shadow;
     width: 100%;
-    margin-top: 50px;
 
     .order {
       padding:10px;
@@ -34,7 +33,7 @@
     @include flex-center;
     flex-direction: row;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 10px;
 
     div + div {
       margin-left: 20px;
@@ -53,7 +52,7 @@
     @include flex-center;
     place-content: space-evenly;
     @include box-shadow;
-    margin: 20px 5px 20px 5px;
+    margin: 10px 5px 20px 5px;
     flex-direction: row;
     height: 60px;
     border-radius: 10px;
@@ -70,4 +69,8 @@
   cursor: pointer;
   height: 22px;
   z-index: 1;
+
+  @media only screen and (max-width: 600px){
+    top: 600px;
+    }
 }
