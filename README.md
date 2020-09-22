@@ -8,7 +8,7 @@ Project carried out for student purposes, contemplating the technologies I have 
 
 ## Getting started
 
-  Reach out the pokedex: [marcioPokedex]([https://marcio-pokedex.herokuapp.com/](https://marcio-pokedex.herokuapp.com/))
+  Reach out the pokedex: [marcioPokedex](https://marcio-pokedex.herokuapp.com/)
 
 or
 
