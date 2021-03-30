@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from '../../assets/pokedex-logo.png'
+import Cart from "../Cart/index"
+
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 import './styles.scss'
@@ -9,6 +11,7 @@ function Header() {
     <React.Fragment>
       <header>
           <img src={logo} className="img" alt="Pokedex Logo"/>
+          <Cart />
           <aside>
             <a href="https://www.instagram.com/marcio_sardou/" target="_blank">
               <FaInstagram size="25"color="#252f83"/>

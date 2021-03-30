@@ -44,6 +44,24 @@
     padding: 1px;
     cursor: pointer;
     margin: 9px;
+    
+    &__team {
+      background-color:#215cd1 !important;
+      cursor: pointer;
+      border-radius: 12px;
+      color: $white !important;
+      font-weight: bold;
+      width: 90px;
+      border: 1px solid transparent;
+      padding: 1px;
+      cursor: pointer;
+      margin: 9px;
+
+      &:hover {
+        background-color:$white;
+        color:$red;
+      }
+    }
 
     &:hover {
       background-color:$white;
