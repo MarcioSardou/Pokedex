@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from './pages/Home'
+import Squad from "./pages/Squad"
 import Intern from './pages/Intern'
 import Body from './components/Layout'
 
@@ -14,6 +15,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/pokemon/:id' component={Intern} />
+            <Route exact path='/squad' component={Squad} />
           </Switch>
         </Body>
       </>
