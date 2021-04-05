@@ -1,46 +1,45 @@
+/* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { CgPokemon} from "react-icons/cg";
 import { useDispatch, useSelector } from 'react-redux';
 
-import { decrement, increment } from "../../features/counter/counterSlice"
-import { addPokemon } from "../../features/pokemonSquad/pokemonSquadSlice"
 import './styles.scss';
 import { getId } from '../../utils/pokemonData' 
+import { getFiltredPokemon,setLimitSquad } from '../../utils/pokemonSquad'
+import { decrement, increment } from "../../features/counter/counterSlice"
+import { addPokemon } from "../../features/pokemonSquad/pokemonSquadSlice"
 
 function Pokemon(props) {
   
   const { url, name } = props
+	const dispatch = useDispatch()
+	const { counter,pokemonSquad } = useSelector(state => state)
   const [pokemon, setPokemon] = useState({
     id: '',
     name: '',
     image:'',
   })
 
-  const dispatch = useDispatch()
-  const pokemonStore = useSelector(state => state.pokemonSquad)
+  const multipleDispatch = (clickedPokemon, cardPokemonClicked) => {
 
-
-  const filterPokemon = (clickedPokemon) => {
-    const filterPokemons = pokemonStore.includes(clickedPokemon) 
-    return filterPokemons
-  }
-
-  const multipleDispatch = (clickedPokemon) => {
-        dispatch(increment())
-        dispatch(addPokemon(clickedPokemon))
+    if(counter.value > 5) {
+      alert("Seu time já está cheio.")
+    } else {
+      cardPokemonClicked.classList.add("selected")
+      dispatch(increment())
+      dispatch(addPokemon(clickedPokemon))
+    }
   }
 
   const handleAddTeam = (event) =>  {
-      const clickedPokemon = event?.target?.parentElement?.firstChild?.innerHTML
+			const cardPokemonClicked = event?.target.parentElement
+      const clickedPokemon = cardPokemonClicked?.firstChild?.innerHTML
 
-      filterPokemon(clickedPokemon) 
+      getFiltredPokemon(pokemonSquad,clickedPokemon) 
         ? alert("Esse Pokémon já está no seu time")
-        : multipleDispatch(clickedPokemon)
-      
+        : multipleDispatch(clickedPokemon, cardPokemonClicked)
   }
- 
-  
   
   useEffect(() => {
     const id = getId(url)

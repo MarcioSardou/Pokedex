@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 // import { Container } from './styles';
+import api from "../../utils/api"
 
 function Squad() {
 
-  const store = useSelector(store => store)
+  const {counter, pokemonSquad} = useSelector(store => store)
+
+  const [selectedPokemons, setSelectedPokemons] = useState(pokemonSquad)
+  const [pokemon, setPokemon] = useState([])
+
   
-  console.log(store)
+  const renderPokemons = () => {
+    const pokemons = selectedPokemons.map(pokemon => pokemon.toLowerCase())
+
+    for (let i = 0; i < pokemons.length; i++) {
+      const pokemonsName = pokemons[i].toString()
+      api.get(`https://pokeapi.co/api/v2/pokemon/${pokemonsName}`).then(response => setPokemon(response.data))
+    }
+  }
+
+  useEffect(() => {
+      renderPokemons()
+  },[])
   return <>
-    <h1>SQUAD</h1>
-  
+    <div>
+      <h1>{pokemon.name}</h1>
+    </div>
   </>;
 }
 

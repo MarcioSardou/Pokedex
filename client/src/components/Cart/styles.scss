@@ -1,11 +1,20 @@
 .cart {
     display: flex;
+    text-decoration: none;
+
+    @media only screen and (max-width: 600px){
+        flex-direction: column;
+        margin-left: 5px;
+    }
 
     .img{
         width: 40px;
     }
 
     .text{
-
+    text-decoration: none;
+    color: #ffff;
+    font-size: 15px;
+    font-weight: bold;
     }
 }
