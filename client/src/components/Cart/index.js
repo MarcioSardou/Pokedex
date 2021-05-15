@@ -1,5 +1,5 @@
 import React from 'react';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import cartIcon from "../../assets/pokecart.png"
 
@@ -7,12 +7,12 @@ import "./styles.scss"
 
 function Cart() {
 
-  const store = useSelector(store => store.counter.value)
-
+  const pokemonQuantity = useSelector(store => store.pokemonSquad.pokemonQuantity)
+  
   return (
     <div className="cart">
     <img src={cartIcon} className="img" alt="Pokedex Logo" />
-    <p className="text">Equipe ({store})</p>
+    <p className="text">Equipe ({pokemonQuantity})</p>
     </div>
   );
 }

@@ -4,52 +4,28 @@ import { Link } from "react-router-dom";
 import { CgPokemon} from "react-icons/cg";
 import { useDispatch, useSelector } from 'react-redux';
 
-import './styles.scss';
 import { getId } from '../../utils/pokemonData' 
-import { getFiltredPokemon } from '../../utils/pokemonSquad'
-import { decrement, increment } from "../../features/counter/counterSlice"
 import { addPokemon, RemovePokemon } from "../../features/pokemonSquad/pokemonSquadSlice"
+import './styles.scss';
 
 function Pokemon(props) {
 
 	const dispatch = useDispatch()
   const { url, name } = props
-	const { counter, pokemonSquad } = useSelector(state => state)
-
-  const [ hasInMyTeam, setHasInMyTeam ] = useState(false)
+	const { pokemonSquad } = useSelector(state => state)
+  const [ isSelectedPokemon, setIsSelectedPokemon ] = useState(false)
   const [pokemon, setPokemon] = useState({
     id: '',
     name: '',
     image:'',
   })
 
+  
 
-
-  const AddmultipleDispatch = (clickedPokemon, cardPokemonClicked) => {
-
-    if(counter.value > 5) {
-      alert("Seu time já está cheio.")
-    } else {
-      cardPokemonClicked.classList.add("selected")
-      hasPokemonOnTeam(clickedPokemon)
-      dispatch(increment())
-      dispatch(addPokemon(clickedPokemon))
-    }
-  }
-
-  const handleAddTeam = (event) =>  {
-    const cardPokemonClicked = event?.target.parentElement
-    const clickedPokemon = cardPokemonClicked?.firstChild?.innerHTML
-
-    getFiltredPokemon(pokemonSquad,clickedPokemon) 
-      ? alert("Esse Pokémon já está no seu time")
-      : AddmultipleDispatch(clickedPokemon, cardPokemonClicked)
-}
 
   const RemoveMultipleDispatch = (filtredClickedPokemon, cardPokemonClicked) => {
     cardPokemonClicked.classList.remove("selected")
     dispatch(RemovePokemon(filtredClickedPokemon))
-    dispatch(decrement())
   }
 
   const handleRemoveTeam = (event) => {
@@ -61,11 +37,30 @@ function Pokemon(props) {
       RemoveMultipleDispatch(filtredClickedPokemon, cardPokemonClicked)
   }
 
-  const hasPokemonOnTeam = useCallback((clickedPokemonName) => {
-    const filtred = pokemonSquad.map(pokemon => pokemon === clickedPokemonName )
-    setHasInMyTeam(filtred)
-  },[hasInMyTeam])
+  // const hasPokemonOnTeam = useCallback((PokemonClickedName) => {
+  //   console.debug(pokemonSquad)
+    // const filtred = pokemonSquad.map(pokemon => pokemon === clickedPokemonName )
+    // setHasInMyTeam(filtred)
+  // },[])
+
+
   
+  const handleAddTeam = (event) =>  {
+    const pokemonClickedElement = event?.target.parentElement
+    const PokemonClickedName = pokemonClickedElement.dataset.name
+
+    if(pokemonSquad.pokemonName.includes(PokemonClickedName)) {
+
+      alert("Esse Pokémon já está no seu time")
+    } else {
+
+      pokemonSquad.pokemonQuantity > 5 ? alert("Seu time já está cheio.") : null
+      // hasPokemonOnTeam(PokemonClickedName) //TODO CONTINUAR DAQUI
+      pokemonClickedElement.classList.add('selected')
+      dispatch(addPokemon(PokemonClickedName))
+    }
+}
+
   
   useEffect(() => {
     const id = getId(url)
@@ -77,7 +72,7 @@ function Pokemon(props) {
   },[name, url])
   return (
     <>
-      <div className="card" id={pokemon.id} >
+      <div className='card' id={pokemon.id} data-name={pokemon.name}>
       <div className="card__title">{pokemon.name.toLocaleUpperCase()}</div>
         <img className="card__img" src={pokemon.image} alt={`${pokemon.name}`}/>
       <div className="card__number">#{pokemon.id.toString().padStart(3, '0')}</div>
@@ -93,9 +88,9 @@ function Pokemon(props) {
           Add
       </button>
 
-      {hasInMyTeam ? (
+      {/* {isSelectedPokemon ? (
         <button className="remove-btn" onClick={(event) => handleRemoveTeam(event)}>Remover</button>
-      ) : ""}
+      ) : ""} */}
     </div>
     </>
     )

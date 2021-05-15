@@ -1,5 +1,7 @@
-/* eslint-disable no-unused-expressions */
-export const getFiltredPokemon = (pokemonSquad, clickedPokemon, ) => {
-    const filtredPokemons = pokemonSquad.includes(clickedPokemon)
-    return filtredPokemons
-  }
+// const handleAddTeam = (event) =>  {
+//   const cardPokemonClicked = event?.target.parentElement.dataset.name
+  
+//   pokemonSquad.includes(cardPokemonClicked)
+//   ? alert("Esse Pokémon já está no seu time")
+//   : AddmultipleDispatch(cardPokemonClicked)
+// }
