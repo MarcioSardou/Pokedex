@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CgPokemon} from "react-icons/cg";
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getId } from '../../utils/pokemonData' 
+import { getId } from '../../utils/pokemonData'
 import { addPokemon, RemovePokemon } from "../../features/pokemonSquad/pokemonSquadSlice"
 import './styles.scss';
 
@@ -12,7 +12,7 @@ function Pokemon(props) {
 
 	const dispatch = useDispatch()
   const { url, name } = props
-	const { pokemonSquad } = useSelector(state => state)
+	const { pokemonName, pokemonQuantity  } = useSelector(state => state.pokemonSquad)
   const [ isSelectedPokemon, setIsSelectedPokemon ] = useState(false)
   const [pokemon, setPokemon] = useState({
     id: '',
@@ -22,43 +22,32 @@ function Pokemon(props) {
 
   
 
-
-  const RemoveMultipleDispatch = (filtredClickedPokemon, cardPokemonClicked) => {
-    cardPokemonClicked.classList.remove("selected")
-    dispatch(RemovePokemon(filtredClickedPokemon))
-  }
-
   const handleRemoveTeam = (event) => {
-    const clickedPokemon = event?.target.parentElement?.firstChild?.innerHTML
-    const cardPokemonClicked = event?.target.parentElement
-    const filtredClickedPokemon = pokemonSquad.findIndex(item => item === clickedPokemon)
-    if(filtredClickedPokemon < 0) return null
 
-      RemoveMultipleDispatch(filtredClickedPokemon, cardPokemonClicked)
+    const pokemonClickedElement = event?.target.parentElement
+    const PokemonClickedName = pokemonClickedElement.dataset.name
+
+    const selectedPokemonIndex = pokemonName.findIndex(pokemon => pokemon === PokemonClickedName )
+
+    if(selectedPokemonIndex < 0) return null
+
+    dispatch(RemovePokemon(selectedPokemonIndex))
+    setIsSelectedPokemon(false)
+    pokemonClickedElement.classList.remove('selected')
   }
-
-  // const hasPokemonOnTeam = useCallback((PokemonClickedName) => {
-  //   console.debug(pokemonSquad)
-    // const filtred = pokemonSquad.map(pokemon => pokemon === clickedPokemonName )
-    // setHasInMyTeam(filtred)
-  // },[])
-
 
   
   const handleAddTeam = (event) =>  {
     const pokemonClickedElement = event?.target.parentElement
     const PokemonClickedName = pokemonClickedElement.dataset.name
 
-    if(pokemonSquad.pokemonName.includes(PokemonClickedName)) {
+    if(pokemonName.includes(PokemonClickedName)) return alert("Esse Pokémon já está no seu time")
+ 
+    if(pokemonQuantity > 5 ) return alert ('Máximo de 5 pokemons na equipe.') 
 
-      alert("Esse Pokémon já está no seu time")
-    } else {
-
-      pokemonSquad.pokemonQuantity > 5 ? alert("Seu time já está cheio.") : null
-      // hasPokemonOnTeam(PokemonClickedName) //TODO CONTINUAR DAQUI
-      pokemonClickedElement.classList.add('selected')
-      dispatch(addPokemon(PokemonClickedName))
-    }
+    dispatch(addPokemon(PokemonClickedName))
+    setIsSelectedPokemon(true)
+    pokemonClickedElement.classList.add('selected')
 }
 
   
@@ -88,9 +77,9 @@ function Pokemon(props) {
           Add
       </button>
 
-      {/* {isSelectedPokemon ? (
+      {isSelectedPokemon ? (
         <button className="remove-btn" onClick={(event) => handleRemoveTeam(event)}>Remover</button>
-      ) : ""} */}
+      ) : ""}
     </div>
     </>
     )

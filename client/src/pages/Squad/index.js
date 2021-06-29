@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
-// import { Container } from './styles';
 import api from "../../utils/api"
-import { getId } from '../../utils/pokemonData' 
+import Pokemon from "../../components/Pokemon";
 
 
-function Squad(props) {
-  const {counter, pokemonSquad} = useSelector(store => store)
-  const [selectedPokemons, setSelectedPokemons] = useState(pokemonSquad)
-  const [pokemon, setPokemon] = useState()
+function Squad() {
+  const { pokemonName } = useSelector(store => store.pokemonSquad)
+  // const [pokemon, setPokemon] = useState([])
 
 
   
-  const renderPokemons = () => {
-    const pokemons = selectedPokemons.map(pokemon => pokemon.toLowerCase())
 
-    pokemons.forEach(element => {
-      const pokemonsName = element.toString()
-      api.get(`https://pokeapi.co/api/v2/pokemon/${pokemonsName}`).then(response => setPokemon(response))
-    });
-  }
 
   useEffect(() => {
 
+    
+    const pokemon = pokemonName.map(pokemon => pokemon)
+    
+    console.debug(pokemon)
+
+    api.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(response => response.data)
+
   },[])
   return <>
-        {console.log(pokemon)}
+        {/* {console.log(pokemon)} */}
+
+        {/* <div className="home__pokeList">
+          {pokemon.map((pokemon) => (
+            <Pokemon key={pokemon.name} url={pokemon.url} name={pokemon.name} />
+            ))}
+        </div> */}
   </>;
 }
 

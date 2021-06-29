@@ -7,14 +7,15 @@ export const pokemonSquadSlice = createSlice({
     pokemonQuantity: 0
   },
   
-
+//TODO : VERIFICAR AQUI SE JA BATEU O LIMITE DE 5 POKEMONS 
   reducers: {
-    addPokemon: (state, { payload }) => {
+    addPokemon: (state, { payload, type } ) => {
       state.pokemonQuantity +=1
       state.pokemonName.push(payload);
     },
     RemovePokemon: (state, { payload }) => {
-      state.splice(payload, 1);
+      state.pokemonQuantity -=1
+      state.pokemonName.splice(payload, 1);
     },
   },
 });
