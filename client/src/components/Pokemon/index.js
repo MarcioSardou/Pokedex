@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getId } from '../../utils/pokemonData' 
 import { Link } from "react-router-dom";
 import { CgPokemon } from "react-icons/cg";
+import api from '../../utils/api'
 import './styles.scss';
 
 function Pokemon(props) {
@@ -15,11 +16,12 @@ function Pokemon(props) {
   
   useEffect(() => {
     const id = getId(url)
-
-    setPokemon({
-      id,
-      name,
-      image: `https://pokeres.bastionbot.org/images/pokemon/${id}.png`
+    api.get(`/${id}`).then(response => {
+      setPokemon({
+        id,
+        name,
+        image: response.data.sprites.front_default
+      })
     })
 
   },[name, url])

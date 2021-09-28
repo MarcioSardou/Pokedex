@@ -8,7 +8,6 @@
     
     const { id } = useParams();
     const  history  = useHistory();
-    const imageUrl = `https://pokeres.bastionbot.org/images/pokemon/${id}.png`
     const [pokemonData, setPokemonData] = useState({
       order: '',
       name: '',
@@ -28,13 +27,13 @@
         .then(response => setPokemonData({
           order: response.data.id,
           name: response.data.name.toLocaleUpperCase(),
-          img: imageUrl,
+          img: response.data.sprites.other.dream_world.front_default,
           height: response.data.height,
           weigth: response.data.weight,
           type: response.data.types.map(types => types.type.name),
         }))
 
-    }, [id, imageUrl])
+    }, [id])
 
     const pokemon = pokemonData
     const typeColors = pokeTypes
